@@ -1,0 +1,9 @@
+app:
+  producer:
+    min-wait-time: 10
+    max-wait-time: 50
+  consumer:
+    min-wait-time: 80
+    max-wait-time: 400
+  min-cpus: 2
+  max-cpus: 8

@@ -12,14 +12,15 @@ public class Consumer implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
 
     private final Integer value;
+    private final Long waitTime;
 
-    public Consumer(Integer value) {
+    public Consumer(Integer value, Long waitTime) {
         this.value = value;
+        this.waitTime = waitTime;
     }
 
 
     public void run() {
-        long waitTime = RandomUtil.randomLongerWaitTime();
         waitTime(waitTime);
 
         LOG.info("Waited {} milliseconds, value: {}", waitTime, value);

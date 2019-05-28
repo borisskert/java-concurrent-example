@@ -15,24 +15,35 @@ public class Producer implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Producer.class);
 
     private final Queue queue;
+    private final ConsumerFactory consumerFactory;
+    private final ApplicationProperties.WaitTimeProperties producerProperties;
 
     @Autowired
-    public Producer(Queue queue) {
+    public Producer(Queue queue, ConsumerFactory consumerFactory, ApplicationProperties properties) {
         this.queue = queue;
+        this.consumerFactory = consumerFactory;
+        producerProperties = properties.getProducer();
     }
 
     public void run() {
         int counter = 0;
 
         do {
-            long waitTime = RandomUtil.randomShorterWaitTime();
+            long waitTime = getWaitTime();
             waitTime(waitTime);
 
-            queue.queue(new Consumer(counter));
+            queue.queue(consumerFactory.build());
             counter++;
 
-            LOG.info("Waited {} ms. Added {} to queue. New size: {}", waitTime, counter, queue.size());
+            LOG.info("Waited {} ms. Added {} to queue. New queue size: {}", waitTime, counter, queue.size());
         } while (true);
+    }
+
+    private long getWaitTime() {
+        return RandomUtil.nextLong(
+                producerProperties.getMinWaitTime(),
+                producerProperties.getMaxWaitTime()
+        );
     }
 
     private void waitTime(long waitTime) {
