@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Component
 @ConfigurationProperties(prefix = "app")
+@Validated
 public class ApplicationProperties {
 
     @NotNull
