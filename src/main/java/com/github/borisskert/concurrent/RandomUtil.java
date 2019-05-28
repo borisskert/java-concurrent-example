@@ -2,6 +2,9 @@ package com.github.borisskert.concurrent;
 
 import java.util.Random;
 
+/**
+ * Simple utility class to randomize wait times.
+ */
 public class RandomUtil {
 
     private static final Random random = new Random();

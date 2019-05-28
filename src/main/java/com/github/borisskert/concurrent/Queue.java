@@ -3,6 +3,9 @@ package com.github.borisskert.concurrent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Wrapper class around {@link ExecutionService} to provide methods to add items to {@link Queue} and look for queue-size.
+ */
 @Component
 public class Queue {
 

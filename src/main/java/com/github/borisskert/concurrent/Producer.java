@@ -5,6 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Produces increasing integer numbers and add them as {@link Consumer}s into the {@link Queue}. The {@link Producer}
+ * is the first item who gets added to the {@link Queue} and gets executed by the {@link ExecutionService}.
+ */
 @Component
 public class Producer implements Runnable {
 

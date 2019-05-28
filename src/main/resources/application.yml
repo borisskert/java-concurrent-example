@@ -1,2 +1,3 @@
 app:
+  min-cpus: 2
   max-cpus: 16

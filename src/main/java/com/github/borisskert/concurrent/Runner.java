@@ -4,6 +4,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * Initializes the queued work on application start.
+ */
 @Component
 public class Runner implements ApplicationRunner {
 
